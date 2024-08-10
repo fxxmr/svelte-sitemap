@@ -10,7 +10,7 @@ const index_1 = require("./src/index");
 const REPO_URL = 'https://github.com/bartholomej/svelte-sitemap';
 let stop = false;
 const args = (0, minimist_1.default)(process.argv.slice(2), {
-    string: ['domain', 'out-dir', 'ignore', 'change-freq'],
+    string: ['domain', 'out-dir', 'ignore', 'change-freq', 'additional'],
     boolean: ['attribution', 'reset-time', 'trailing-slashes', 'debug', 'version'],
     default: { attribution: true, 'trailing-slashes': false, default: false },
     alias: {
@@ -29,7 +29,9 @@ const args = (0, minimist_1.default)(process.argv.slice(2), {
         i: 'ignore',
         I: 'ignore',
         t: 'trailing-slashes',
-        T: 'trailing-slashes'
+        T: 'trailing-slashes',
+        a: 'additional',
+        A: 'additional'
     },
     unknown: (err) => {
         console.log('⚠ Those arguments are not supported:', err);
@@ -49,6 +51,7 @@ if (args.help || args.version === '' || args.version === true) {
     log('  -d, --domain            Use your domain (eg. https://example.com)');
     log('  -o, --out-dir           Custom output dir');
     log('  -i, --ignore            Exclude some pages or folders');
+    log('  -a, --additional Additional pages outside of SvelteKit (e.g. /, /contact)');
     log('  -t, --trailing-slashes  Do you like trailing slashes?');
     log('  -r, --reset-time        Set modified time to now');
     log('  -c, --change-freq       Set change frequency `weekly` | `daily` | …');
@@ -71,6 +74,11 @@ else if (stop) {
 else {
     const domain = args.domain ? args.domain : undefined;
     const debug = args.debug === '' || args.debug === true ? true : false;
+    const additional = Array.isArray(args['additional'])
+        ? args['additional']
+        : args.additional
+            ? [args.additional]
+            : [];
     const resetTime = args['reset-time'] === '' || args['reset-time'] === true ? true : false;
     const trailingSlashes = args['trailing-slashes'] === '' || args['trailing-slashes'] === true ? true : false;
     const changeFreq = args['change-freq'];
@@ -84,7 +92,8 @@ else {
         outDir,
         attribution,
         ignore,
-        trailingSlashes
+        trailingSlashes,
+        additional
     };
     (0, index_1.createSitemap)(domain, options);
 }

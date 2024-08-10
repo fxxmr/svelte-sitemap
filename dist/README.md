@@ -2,6 +2,14 @@
 [![Package License](https://img.shields.io/npm/l/svelte-sitemap.svg)](https://www.npmjs.com/svelte-sitemap)
 [![Build & Publish](https://github.com/bartholomej/svelte-sitemap/workflows/Build%20&%20Publish/badge.svg)](https://github.com/bartholomej/svelte-sitemap/actions)
 
+# Temporary Workaround until https://github.com/bartholomej/svelte-sitemap/pull/46 is merged
+
+Chnages from #46 are added to this fork
+
+## install:
+
+`npm install 'https://gitpkg.vercel.app/fxxmr/svelte-sitemap/dist?master' --save-dev`
+
 # Svelte `sitemap.xml` generator
 
 > Small helper which scans your Svelte routes and generates _sitemap.xml_

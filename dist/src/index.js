@@ -10,6 +10,11 @@ const createSitemap = async (domain = vars_1.DOMAIN, options) => {
         console.log('OPTIONS', options);
     }
     const json = await (0, global_helper_1.prepareData)(domain, options);
+    options.additional.forEach((url) => {
+        json.push({
+            page: `${domain}${url}`
+        });
+    });
     if (options === null || options === void 0 ? void 0 : options.debug) {
         console.log('RESULT', json);
     }

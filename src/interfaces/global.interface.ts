@@ -8,6 +8,7 @@ export interface Options {
   changeFreq?: ChangeFreq;
   resetTime?: boolean;
   outDir?: string;
+  additional?: string[];
   attribution?: boolean;
   ignore?: string | string[];
   trailingSlashes?: boolean;
@@ -32,4 +33,4 @@ export const changeFreq = [
 /**
  * Specs: https://www.sitemaps.org/protocol.html
  */
-export type ChangeFreq = typeof changeFreq[number];
+export type ChangeFreq = (typeof changeFreq)[number];
