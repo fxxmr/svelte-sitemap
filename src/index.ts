@@ -12,7 +12,8 @@ export const createSitemap = async (domain: string = DOMAIN, options?: Options):
 
   options.additional.forEach((url) => {
     json.push({
-      page: `${domain}${url}`
+      page: `${domain}${url}`,
+      lastMod: options?.resetTime ? new Date().toISOString().split('T')[0] : ''
     });
   });
 

@@ -52,7 +52,7 @@ if (args.help || args.version === '' || args.version === true) {
   log('  -d, --domain            Use your domain (eg. https://example.com)');
   log('  -o, --out-dir           Custom output dir');
   log('  -i, --ignore            Exclude some pages or folders');
-  log('  -a, --additional Additional pages outside of SvelteKit (e.g. /, /contact)');
+  log('  -a, --additional        Additional pages outside of SvelteKit (e.g. /, /contact)');
   log('  -t, --trailing-slashes  Do you like trailing slashes?');
   log('  -r, --reset-time        Set modified time to now');
   log('  -c, --change-freq       Set change frequency `weekly` | `daily` | …');
