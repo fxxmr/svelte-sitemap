@@ -12,7 +12,8 @@ const createSitemap = async (domain = vars_1.DOMAIN, options) => {
     const json = await (0, global_helper_1.prepareData)(domain, options);
     options.additional.forEach((url) => {
         json.push({
-            page: `${domain}${url}`
+            page: `${domain}${url}`,
+            lastMod: (options === null || options === void 0 ? void 0 : options.resetTime) ? new Date().toISOString().split('T')[0] : ''
         });
     });
     if (options === null || options === void 0 ? void 0 : options.debug) {
